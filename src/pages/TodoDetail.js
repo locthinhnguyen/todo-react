@@ -3,8 +3,8 @@ import { Routes, Route, useParams } from 'react-router-dom';
 import { todoApi } from '../apis/todo';
 
 const TodoDetail = () => {
-  let { detail } = useParams();
-  console.log('id: ', detail);
+  const { detail } = useParams();
+  console.log('detail: ', detail);
   const [todoDetail, setTodoDetail] = useState([]);
 
   const getTodoDetail = async (id) => {
@@ -31,7 +31,6 @@ const TodoDetail = () => {
             id="todoName"
             type="text"
             placeholder="Name todo"
-            value={todoDetail}
           />
         </div>
         <div className=" flex items-center gap-5">

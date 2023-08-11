@@ -47,7 +47,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/tododetail/detail" element={<TodoDetail />} />
+          <Route path="/tododetail/:detail" element={<TodoDetail />} />
         </Routes>
       </BrowserRouter>
     </div>

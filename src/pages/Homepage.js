@@ -30,7 +30,8 @@ const Homepage = () => {
     point: '',
   };
   const showDetail = (item) => {
-    navigate(`/tododetail/detail?todoId=${item._id}`);
+    navigate(`/tododetail/64d4b59a55c76329d1fa7f5d `);
+    //detail?todoId=${item._id}
   };
   // object not map
   // du lieu khoi tao load truoc => ui =>
