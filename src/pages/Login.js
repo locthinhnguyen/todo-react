@@ -50,6 +50,9 @@ const Login = () => {
             <Link to="/register" className="font-bold">
               Register
             </Link>
+            <Link to="/tododetail" className="font-bold">
+              Todo Detail
+            </Link>
           </div>
           <h1 className="font-bold text-[20px]">Login</h1>
           <Form

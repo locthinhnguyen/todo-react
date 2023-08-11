@@ -1,6 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React from 'react';
-import { Axios } from 'axios';
 
 import { Form, Input, Button, Select, InputNumber, notification } from 'antd';
 import { userApi } from '../apis/user';
