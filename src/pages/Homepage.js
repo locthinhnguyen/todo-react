@@ -24,15 +24,20 @@ const Homepage = () => {
   const [page, setPage] = useState(1);
 
   const navigate = useNavigate();
-  const todolist = {
-    name: '',
-    description: '',
-    point: '',
+
+  const addTodo = () => {
+    navigate(`/create`);
   };
+  // const todolist = {
+  //   name: '',
+  //   description: '',
+  //   point: '',
+  // };
   const showDetail = (item) => {
-    navigate(`/tododetail/64d4b59a55c76329d1fa7f5d `);
-    //detail?todoId=${item._id}
+    navigate(`/tododetail/${item._id} `);
+    //detail?todoId=
   };
+
   // object not map
   // du lieu khoi tao load truoc => ui =>
   // console.log('todo: ', todo);
@@ -75,6 +80,9 @@ const Homepage = () => {
         dataSource={todo}
         rowKey="_id"
       />
+      <button className=" hover:bg-blue-400" onClick={addTodo}>
+        + New
+      </button>
     </div>
   );
 };

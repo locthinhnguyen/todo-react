@@ -49,8 +49,8 @@ const todobyid = async (id) => {
 //     "__v": 0
 // }
 
-const update = async () => {
-  const res = await axiosInstance.patch(`${API_URL}/${url}/update`);
+const update = async (data) => {
+  const res = await axiosInstance.patch(`${API_URL}/${url}/update`, data);
   return res.data;
 };
 
@@ -60,8 +60,11 @@ const update = async () => {
 //     "description": "Gio la hien tuong thien nhien",
 //     "point": 10
 // }
-const deleted = async (id) => {
-  const res = await axiosInstance.delete(`${API_URL}/${url}/delete`);
+const deleted = async (todoId) => {
+  console.log('todoId: ', todoId);
+  const res = await axiosInstance.delete(`${API_URL}/${url}/delete`, {
+    todoId: todoId,
+  });
   return res.data;
 };
 
