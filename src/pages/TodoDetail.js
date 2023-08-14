@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { todoApi } from '../apis/todo';
 
 const TodoDetail = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
 
   // console.log('todoDetail: ', todoDetail);
@@ -24,6 +25,7 @@ const TodoDetail = () => {
       console.log('res:asdadasd ', res);
       setTodo(res.data);
       console.log('res.data: ', res.data);
+      navigate(`/`);
     } catch (error) {
       console.log('error: ', error);
     }
