@@ -37,11 +37,11 @@ const Homepage = () => {
     navigate(`/tododetail/${item._id} `);
     //detail?todoId=
   };
-
-  // object not map
+  // truyen data bang useNavigate and use Location
   // du lieu khoi tao load truoc => ui =>
   // console.log('todo: ', todo);
   // bien dong thi tao state de luu tru
+  // Protected routes
 
   const getMyTodos = async (page, limit = 10) => {
     try {

@@ -25,6 +25,8 @@ const Login = () => {
         });
         localStorage.setItem('accessToken', res?.data?.accessToken);
         navigate('/');
+        //, { replace: true } xoa history
+        //navigate("", [])
       }
     } catch (error) {
       notification?.error({
