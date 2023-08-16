@@ -4,14 +4,20 @@ import { useNavigate } from 'react-router-dom';
 
 const Create = () => {
   const navigate = useNavigate();
+  // console.log('1');
   const [newTodo, setNewTodo] = useState({
     name: '',
     description: '',
-    point: Number,
+    point: 0,
     isDone: false,
   });
 
+  const { name, description, point, isDone } = newTodo; //object destructuring
+
+  // console.log('2');
+
   const handleSubmit = async () => {
+    // console.log('3');
     try {
       const res = await todoApi.create(newTodo);
       console.log(res);
@@ -19,6 +25,10 @@ const Create = () => {
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const handlerChange = (e, value) => {
+    setNewTodo({ ...newTodo, [value]: e.target.value });
   };
 
   return (
@@ -32,8 +42,8 @@ const Create = () => {
             id="todoName"
             type="text"
             placeholder="Name todo"
-            value={newTodo.name}
-            onChange={(e) => setNewTodo({ ...newTodo, name: e.target.value })}
+            value={name}
+            onChange={(e) => handlerChange(e, 'name')}
           />
         </div>
         <div className="flex items-center gap-5">
@@ -43,10 +53,8 @@ const Create = () => {
             id="description"
             type="text"
             placeholder="description"
-            value={newTodo.description}
-            onChange={(e) =>
-              setNewTodo({ ...newTodo, description: e.target.value })
-            }
+            value={description}
+            onChange={(e) => handlerChange(e, 'description')}
           />
         </div>
         <div className="flex items-center gap-5">
@@ -55,9 +63,9 @@ const Create = () => {
             className="border rounded w-full py-2 px-3"
             id="point"
             type="number"
-            placeholder="number"
-            value={newTodo.point}
-            onChange={(e) => setNewTodo({ ...newTodo, point: e.target.value })}
+            placeholder="Point"
+            value={point}
+            onChange={(e) => handlerChange(e, 'point')}
           />
         </div>
         <div className="flex items-center gap-5">
@@ -66,7 +74,7 @@ const Create = () => {
             className="border rounded w-full py-2 px-3"
             id="isDone"
             type="checkbox"
-            checked={newTodo.isDone}
+            checked={isDone}
             onChange={(e) =>
               setNewTodo({ ...newTodo, isDone: !newTodo.isDone })
             }

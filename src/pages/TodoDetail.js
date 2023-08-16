@@ -4,27 +4,30 @@ import { todoApi } from '../apis/todo';
 
 const TodoDetail = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
+  // console.log('navigate: ', navigate);
+  console.log('1');
 
-  // console.log('todoDetail: ', todoDetail);
+  const { id } = useParams();
+  console.log('id: ', id);
+  console.log('2');
 
   const [todo, setTodo] = useState({
     name: '',
     description: '',
-    point: Number,
+    point: 0,
     isDone: '',
   });
-  console.log('todo: ', todo);
+  console.log('3');
+  // console.log('todo: ', todo);
 
   const updateHandle = async () => {
+    console.log('4');
     try {
       const res = await todoApi.update({
         todoId: todo?._id,
         ...todo,
       });
-      console.log('res:asdadasd ', res);
       setTodo(res.data);
-      console.log('res.data: ', res.data);
       navigate(`/`);
     } catch (error) {
       console.log('error: ', error);
@@ -32,11 +35,9 @@ const TodoDetail = () => {
   };
 
   const deleteHandle = async () => {
+    console.log('5');
     try {
-      console.log('todo: ', todo);
-
       const res = await todoApi.deleted(todo?._id);
-      // console.log('todoId: ', todo?.id);
       setTodo(res);
     } catch (error) {
       console.log('error: ', error);
@@ -44,16 +45,14 @@ const TodoDetail = () => {
   };
 
   const getTodoDetail = async (id) => {
+    console.log('6');
     try {
       const res = await todoApi.todobyid(id);
-      // console.log('res: ', res);
       setTodo(res.data);
-      // console.log('res.data: ', res.data);
     } catch (error) {
       console.log('error: ', error);
     }
   };
-
   useEffect(() => {
     getTodoDetail(id);
   }, [id]);
@@ -69,7 +68,7 @@ const TodoDetail = () => {
             id="todoName"
             type="text"
             placeholder="Name todo"
-            value={todo.name}
+            value={'' + todo.name}
             onChange={(e) => setTodo({ ...todo, name: e.target.value })}
           />
         </div>
@@ -82,7 +81,7 @@ const TodoDetail = () => {
             id="description"
             type="text"
             placeholder="description"
-            value={todo.description}
+            value={'' + todo.description}
             onChange={(e) => setTodo({ ...todo, description: e.target.value })}
           />
         </div>
@@ -93,7 +92,7 @@ const TodoDetail = () => {
             id="point"
             type="number"
             placeholder="number"
-            value={todo.point}
+            value={'' + todo.point}
             onChange={(e) => setTodo({ ...todo, point: e.target.value })}
           />
         </div>
@@ -103,7 +102,7 @@ const TodoDetail = () => {
             className="border rounded w-full py-2 px-3"
             id="isDone"
             type="checkbox"
-            value={todo.isDone}
+            value={'' + todo.isDone}
             onChange={(e) => {
               setTodo({ ...todo, isDone: !todo.isDone });
             }}

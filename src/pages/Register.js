@@ -4,10 +4,11 @@ import React from 'react';
 import { Form, Input, Button, Select, InputNumber, notification } from 'antd';
 import { userApi } from '../apis/user';
 
-const { Option } = Select;
-
 const Register = () => {
+  const { Option } = Select;
+
   const navigate = useNavigate();
+
   const handleSubmit = async (data) => {
     console.log(data);
     try {
