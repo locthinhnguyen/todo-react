@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { todoApi } from '../apis/todo';
 import { Pagination, Table } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { HomePageServices, HomePageTodoList } from '../modules';
 
 const Homepage = () => {
   const [todo, setTodo] = useState([]);
-
   const [total, setTotal] = useState();
   console.log('total: ', total);
 
@@ -46,54 +46,21 @@ const Homepage = () => {
     getMyTodos(page);
   }, [page, pageSize]);
 
-  const columns = [
-    {
-      title: 'Name',
-      dataIndex: 'name',
-    },
-    {
-      title: 'Description',
-      dataIndex: 'description',
-    },
-    {
-      title: 'Point',
-      dataIndex: 'point',
-    },
-  ];
-
-  const handlePageChange = (page) => {
+  const onchangethinh = (page, pageSize) => {
     setPage(page);
   };
 
   return (
     <div className=" flex justify-center flex-col items-center">
       <h1 className=" font-bold text-[30px]">List Todo</h1>
-      <Table
-        className="w-full"
-        onRow={(record) => {
-          return {
-            onClick: () => {
-              showDetail(record);
-              // console.log('record: ', record);
-            },
-          };
-        }}
-        // pagination={{
-        //   total: total,
-        //   onChange: (page) => {
-        //     setPage(page);
-        //   },
-        // }}
-
-        columns={columns}
-        dataSource={todo}
-        rowKey="_id"
-      />
-      <Pagination
-        total={total}
-        current={page}
+      <HomePageServices />
+      <HomePageTodoList
         pageSize={pageSize}
-        onChange={handlePageChange}
+        todos={todo}
+        page={page}
+        handlePageChange={onchangethinh}
+        showDetail={showDetail}
+        total={total}
       />
       <button className=" hover:bg-blue-400" onClick={addTodo}>
         + New
