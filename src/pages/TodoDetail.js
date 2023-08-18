@@ -18,7 +18,11 @@ const TodoDetail = () => {
     isDone: '',
   });
   console.log('3');
-  // console.log('todo: ', todo);
+  // console.log('todo: ', todo);\
+
+  const setTodoWithKey = (key, value) => {
+    setTodo({ ...todo, [key]: value });
+  };
 
   const updateHandle = async () => {
     console.log('4');
@@ -69,7 +73,7 @@ const TodoDetail = () => {
             type="text"
             placeholder="Name todo"
             value={'' + todo.name}
-            onChange={(e) => setTodo({ ...todo, name: e.target.value })}
+            onChange={(e) => setTodoWithKey('name', e.target.value)}
           />
         </div>
         <div className=" flex items-center gap-5">
@@ -82,7 +86,7 @@ const TodoDetail = () => {
             type="text"
             placeholder="description"
             value={'' + todo.description}
-            onChange={(e) => setTodo({ ...todo, description: e.target.value })}
+            onChange={(e) => setTodoWithKey('description', e.target.value)}
           />
         </div>
         <div className=" flex items-center gap-5">
@@ -93,7 +97,7 @@ const TodoDetail = () => {
             type="number"
             placeholder="number"
             value={'' + todo.point}
-            onChange={(e) => setTodo({ ...todo, point: e.target.value })}
+            onChange={(e) => setTodoWithKey('point', e.target.value)}
           />
         </div>
         <div className=" flex items-center gap-5">

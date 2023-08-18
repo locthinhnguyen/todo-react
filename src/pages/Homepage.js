@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { todoApi } from '../apis/todo';
-import { Pagination, Table } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { HomePageServices, HomePageTodoList } from '../modules';
 
@@ -11,26 +10,22 @@ const Homepage = () => {
 
   const [page, setPage] = useState(1);
 
-  const [pageSize, setPageSize] = useState(10);
+  const [pageSize] = useState(10);
 
   const navigate = useNavigate();
 
   const addTodo = () => {
     navigate(`/create`);
   };
-  // const todolist = {
-  //   name: '',
-  //   description: '',
-  //   point: '',
-  // };
+
   const showDetail = (item) => {
     navigate(`/tododetail/${item._id} `);
   };
-  // truyen data bang useNavigate and use Location
-  // du lieu khoi tao load truoc => ui =>
-  // console.log('todo: ', todo);
-  // bien dong thi tao state de luu tru
-  // Protected routes
+
+  const onchangethinh = (page, pageSize) => {
+    setPage(page);
+  };
+
   useEffect(() => {
     console.log('so lan duoc goi');
     const getMyTodos = async (page, limit = pageSize) => {
@@ -45,10 +40,6 @@ const Homepage = () => {
     };
     getMyTodos(page);
   }, [page, pageSize]);
-
-  const onchangethinh = (page, pageSize) => {
-    setPage(page);
-  };
 
   return (
     <div className=" flex justify-center flex-col items-center">

@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 const Create = () => {
   const navigate = useNavigate();
-  // console.log('1');
   const [newTodo, setNewTodo] = useState({
     name: '',
     description: '',
@@ -14,10 +13,7 @@ const Create = () => {
 
   const { name, description, point, isDone } = newTodo; //object destructuring
 
-  // console.log('2');
-
   const handleSubmit = async () => {
-    // console.log('3');
     try {
       const res = await todoApi.create(newTodo);
       console.log(res);
